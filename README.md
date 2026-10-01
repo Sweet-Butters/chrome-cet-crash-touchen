@@ -192,3 +192,7 @@ The raw dumps (`*.dmp`) contain process memory and are not published here. `data
 ## Tools
 
 PowerShell (event logs, services, Authenticode signatures), Python `pefile` and `minidump`, Windows SDK headers.
+
+## Process journal
+
+A chronological diary of the investigation, dead ends included (Korean): [docs/journal.md](docs/journal.md)

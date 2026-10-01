@@ -192,3 +192,7 @@ python analysis/analyze_dumps.py "%LOCALAPPDATA%\Google\Chrome\User Data\Crashpa
 ## 도구
 
 PowerShell(이벤트 로그·서비스·PE 서명 확인), Python `pefile`·`minidump`, Windows SDK 헤더.
+
+## 과정 일기
+
+조사 과정을 시간순으로 적은 기록(헛걸음 포함): [docs/journal.md](docs/journal.md)
