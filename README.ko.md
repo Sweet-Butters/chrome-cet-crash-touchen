@@ -11,6 +11,7 @@
 | 근본 원인 | 화면 캡처 방지용 API 후킹이 하드웨어 스택 보호(CET)와 호환되지 않음 |
 | 결정적 증거 | 충돌 덤프 32/32건 동일 지점(`GDI32!BitBlt`의 `RET`). 32/32건에 `TENXWGuard64_051.dll` 로드. 스택과 섀도 스택의 복귀 주소 불일치 |
 | 해결 | TouchEn nxWeb 제거. Chrome 재설치는 효과 없음 |
+| 신고 | Chromium 이슈 [568337124](https://issues.chromium.org/issues/568337124) (2026-10-02) |
 | 환경 | Windows 11 빌드 26200.9457, Intel Core i5-13500(CET 지원), Chrome 154.0.8037.58 → .93 |
 
 ---

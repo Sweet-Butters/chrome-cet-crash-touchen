@@ -16,7 +16,8 @@
 | 10/02 01:2x | "정부 프로그램 깔고 나서부터"라는 단서 → 보안 프로그램 추적 |
 | 10/02 01:21 | KOS 제거(효과 없음) → TouchEn 제거 → **Chrome 정상** |
 | 10/02 01:2x | 충돌 덤프 32개 분석으로 원리 규명(CET 섀도 스택) |
-| 10/02 01:3x | GitHub 공개, Chromium 신고 시작 |
+| 10/02 01:3x | GitHub 공개 |
+| 10/02 01:41 | Chromium 이슈 [568337124](https://issues.chromium.org/issues/568337124) 등록 |
 
 ---
 
@@ -185,7 +186,11 @@ gh repo create Sweet-Butters/chrome-cet-crash-touchen --public --source . --push
 - 분류: `Crashes`
 - 기존 이슈를 검색했다는 확인란에 체크
 
-**2단계 화면(충돌 세부 정보)에 넣은 값**
+**2단계 화면(충돌 세부 정보)**
+
+![Chromium 이슈 마법사 2단계: 버전, 요약, 재현 단계, 문제 설명](images/03-chromium-wizard-step2.png)
+
+넣은 값:
 
 | 칸 | 값 |
 |---|---|
@@ -195,23 +200,40 @@ gh repo create Sweet-Butters/chrome-cet-crash-touchen --public --source . --push
 | Feedback report 보냈나 | `No`. TouchEn을 이미 지워서 지금 보내는 보고서에는 충돌이 담기지 않는다 |
 | Steps to reproduce | TouchEn nxWeb 설치 → Chrome 실행 → 즉시 종료 (3줄) |
 | Describe the problem | 환경, 덤프 분석 요약, 저장소 링크, Chrome 쪽 개선 제안(약 1,600자) |
-| Did this work before? | `Yes`. TouchEn 설치 전에는 같은 버전이 정상 |
+| Did this work before? | 기본값 `Not applicable or don't know` 그대로 제출됨. `Yes`(TouchEn 설치 전에는 정상)로 고르는 편이 더 정확했다 |
 
-**3단계 화면(추가 정보)에 넣은 값**
+**3단계 화면(추가 정보)**
+
+![Chromium 이슈 마법사 3단계: Report ID 없음, The whole browser, 플러그인 아님, CSV 첨부, reCAPTCHA](images/04-chromium-wizard-step3.png)
+
+넣은 값:
 
 | 칸 | 값 |
 |---|---|
 | Report ID from chrome://crashes | 없음. 이 PC는 충돌 보고 업로드가 꺼져 있어 로컬 덤프만 있다 |
-| How severe is the crash? | 실행할 때마다 충돌, 브라우저를 전혀 쓸 수 없음 |
-| Is it a problem with a plugin? | No |
+| How severe is the crash? | `The whole browser` (드롭다운) |
+| Is it a problem with a plugin? | `No - It's the browser itself` (드롭다운) |
 | Additional comments | 업로드 ID가 없는 이유, 로컬 덤프 32개 보유, 요청하면 비공개로 제공 |
 | Attachments | `crashes.csv`(덤프 요약표)만. **덤프 원본은 첨부하지 않는다.** 첨부 파일이 공개될 수 있고, 덤프에는 메모리가 담겨 있다 |
 
 **실수하기 쉬운 곳:** 긴 본문은 클립보드에 넣어 두고 붙여 넣었다. 그런데 중간에 스크린샷을 찍으면 클립보드가 이미지로 바뀐다. 붙여 넣기 직전에 다시 복사해야 한다.
 
+**제출 결과 (01:41)**
+
+reCAPTCHA를 통과하고 Submit을 누르자 이슈가 바로 만들어졌다: [568337124](https://issues.chromium.org/issues/568337124)
+
+![등록된 Chromium 이슈 568337124: Bug, P2, Unconfirmed](images/05-chromium-issue-filed.png)
+
+- 유형 Bug, 우선순위 P2, 심각도 S2, 상태 New/Unconfirmed
+- 신고자 이메일과 실명이 이슈 화면에 나온다. 그래서 스크린샷은 오른쪽 정보 칸을 잘라내고 이름 줄을 가렸다.
+- 첨부한 `crashes.csv`는 Resources(1)에 들어갔다.
+
+**강의용 메모:** 화면마다 스크린샷을 찍어 두면 나중에 단계를 다시 쓰기 쉽다. 다만 계정 정보가 찍히는 화면(제출 후 이슈 화면 등)은 공개 전에 가린다.
+
 ## 남은 단계
 
-- [ ] Chromium 이슈 제출 → 이슈 링크를 README(영어·한국어)에 추가
+- [x] Chromium 이슈 제출 → README(영어·한국어)에 링크 추가 ([568337124](https://issues.chromium.org/issues/568337124))
+- [ ] 이슈에 답이 달리면 확인(덤프 요청이 오면 비공개로 전달)
 - [ ] 라온시큐어 고객지원(기타 문의)에 같은 내용 전달 → 전달 날짜를 README에 추가
 - [ ] 재부팅 한 번(메모리에 남은 흔적 정리)
 - [ ] CrossEX는 남아 있다. 지금은 문제없지만 필요 없으면 제거

@@ -11,6 +11,7 @@
 | Root cause | API hooking used for screen-capture protection is incompatible with hardware-enforced stack protection (CET) |
 | Key evidence | 32/32 dumps fault at the same spot (`RET` of `GDI32!BitBlt`); 32/32 have `TENXWGuard64_051.dll` loaded; the stack and shadow stack disagree on the return address |
 | Fix | Uninstall TouchEn nxWeb. Reinstalling Chrome had no effect |
+| Reported | Chromium issue [568337124](https://issues.chromium.org/issues/568337124) (2026-10-02) |
 | Environment | Windows 11 build 26200.9457, Intel Core i5-13500 (CET capable), Chrome 154.0.8037.58 → .93 |
 
 ---
